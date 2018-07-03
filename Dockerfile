@@ -7,7 +7,7 @@ FROM registry.cn-hangzhou.aliyuncs.com/sovell-io/nginx-base:latest
 
 # 安装node
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
-		&& yum install nodejs
+		&& yum -y install nodejs
 
 #RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 #ADD nginx.conf /etc/nginx/
