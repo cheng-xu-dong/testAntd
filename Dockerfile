@@ -1,5 +1,5 @@
 # 使用 node 8.11.1 作为基础镜像
-FROM registry.cn-hangzhou.aliyuncs.com/test_ocker/test-antd:latest
+FROM node:8.11.1-slim
 
 # 安装nginx
 RUN apt-get update \
