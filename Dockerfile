@@ -11,7 +11,7 @@ WORKDIR /app
 # 将当前目录下的所有文件拷贝到工作目录下
 COPY . /app/
 
-RUN rm -rf /etc/nginx/nginx.conf
+RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 ADD nginx.conf /etc/nginx/
 
 # 声明运行时容器提供的服务器接口
