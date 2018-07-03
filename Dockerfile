@@ -9,6 +9,12 @@ FROM registry.cn-hangzhou.aliyuncs.com/sovell-io/nginx-base:latest
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
 		&& yum -y install nodejs
 
+# 指定工作目录
+WORKDIR /app
+
+# 将当前目录下的所有文件拷贝到工作目录下
+COPY . /app/
+
 #RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 #ADD nginx.conf /etc/nginx/
 
@@ -23,4 +29,5 @@ RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
 RUN npm install \
 		&& npm run build \
 	  && mkdir -p /usr/local/nginx/html/sovell-lachesis-static-microrestaurant/wap \
-	  && cp -r dist/* /usr/local/nginx/html/sovell-lachesis-static-microrestaurant/wap
+	  && cp -r dist/* /usr/local/nginx/html/sovell-lachesis-static-microrestaurant/wap \
+		&& rm -rf /app
