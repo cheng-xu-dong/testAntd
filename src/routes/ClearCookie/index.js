@@ -11,7 +11,7 @@ export default class ClearCookie extends Component {
   render() {
     return (
       <WingBlank>
-        <WhiteSpace /><Button type="primary"> 清除缓存 </Button><WhiteSpace />
+        <WhiteSpace /><Button type="primary">清除缓存</Button><WhiteSpace />
       </WingBlank>
     );
   }
