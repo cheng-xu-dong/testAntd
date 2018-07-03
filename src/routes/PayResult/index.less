@@ -1,0 +1,77 @@
+.payResult {
+	background: #FFF;
+
+	.main {
+		padding: .4rem 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		img {
+			width: .98rem;
+			height: .98rem;
+		}
+
+		.tip {
+			font-size: .32rem;
+			color: rgba(51,51,51,1);
+			line-height: .32rem;
+			margin: .2rem 0 .39rem 0;
+			font-weight: bold;
+		}
+
+		.price {
+			font-size: .72rem;
+			color: rgba(51,51,51,1);
+			line-height: .72rem;
+			font-weight: bold;
+			margin-bottom: .4rem;
+		}
+
+		.remark {
+			font-size: .28rem;
+			color: rgba(153,153,153,1);
+			line-height: .28rem;
+			margin-bottom: .4rem;
+		}
+
+		.successButton {
+			padding: 0 1.5rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.button {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 2rem;
+				height: .72rem;
+				font-size: .28rem;
+				color: rgba(51,51,51,1);
+
+				&:first-child {
+					margin-right: .4rem;
+				}
+			}
+		}
+
+		.failButton {
+			.button {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 2rem;
+				height: .72rem;
+				font-size: .28rem;
+				color: rgba(255,255,255,1);
+				background: rgba(245,94,63,.8);
+
+				&:active {
+					background: rgba(245,94,63,1);
+				}
+			}
+		}
+	}
+}

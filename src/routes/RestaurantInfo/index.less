@@ -1,0 +1,168 @@
+.restaurantInfo {
+	height: 100%;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+
+	.itemsInfo {
+		position: relative;
+		min-height: 1.2rem;
+		padding: .24rem 0 .32rem .24rem;
+		display: flex;
+		align-items: center;
+		background: #FFF;
+		-moz-box-shadow: 0 1px 1px #F2F2F2 inset;
+		-webkit-box-shadow: 0 1px 1px #F2F2F2 inset;
+		box-shadow: 0 1px 1px #F2F2F2 inset;
+		margin-bottom: 0.21rem;
+
+		.thumb {
+			position: absolute;
+			top: .24rem;
+
+			img {
+				height: 1.2rem;
+				width: 1.2rem;
+				border: 1px solid #F2F2F2;
+				border-radius: 50%;
+			}
+		}
+
+		.info {
+			margin-left: 1.4rem;
+			width: calc(~"100% - 1.1rem");
+			padding-right: .3rem;
+
+			div {
+				width: 100%;
+			}
+
+			.info_name {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				h3 {
+					margin: 0 !important;
+					font-size: .32rem;
+					line-height: .32rem;
+					color: rgba(30,32,31,1);
+					font-weight: bold;
+				}
+			}
+
+			.info_saleCount {
+				height: .64rem;
+				line-height: .64rem;
+			}
+
+			.info_saleCount, .info_notice {
+				font-size: .24rem;
+				line-height: .24rem;
+				color: rgba(153,153,153,1);
+				display: flex;
+				align-items: center;
+			}
+
+			.info_notice {
+				padding-top: .2rem;
+				align-items: flex-start;
+
+				img {
+					width: 0.22rem;
+					height: 0.18rem;
+					margin-right: .12rem;
+					margin-top: .09rem;
+				}
+
+				span {
+					line-height: .35rem;
+				}
+			}
+		}
+	}
+
+	.shopService {
+		background: #FFF;
+
+		.title {
+			padding-left: .24rem;
+
+			p {
+				border-bottom: 1px solid #F2F2F2;
+				font-size: .28rem;
+				color: rgba(51,51,51,1);
+				height: 0.72rem;
+				line-height: 0.72rem;
+				margin: 0;
+			}
+		}
+
+		.serviceType {
+			display: flex;
+			align-items: center;
+			height: 2.08rem;
+			margin-bottom: .2rem;
+
+			.serviceTypeItem {
+				width: 25%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+
+				span {
+					font-size: .26rem;
+					line-height: .26rem;
+					margin-top: .19rem;
+					color: rgba(102,102,102,1);
+				}
+			}
+		}
+	}
+
+	.shopInfo {
+		background: #FFF;
+
+		.title {
+			padding-left: .24rem;
+
+			p {
+				border-bottom: 1px solid #F2F2F2;
+				font-size: .28rem;
+				color: rgba(51,51,51,1);
+				height: 0.72rem;
+				line-height: 0.72rem;
+				margin: 0;
+			}
+		}
+
+		.shopMessage {
+			padding: 0 .24rem;
+
+			div {
+				margin-top: .31rem;
+				font-size: .26rem;
+				line-height: .26rem;
+				color: rgba(153,153,153,1);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				span {
+					&:first-child {
+						display: inline-block;
+						min-width: 2rem;
+					}
+
+					&:last-child {
+						text-align: right;
+					}
+				}
+
+				&:last-child {
+					padding-bottom: .32rem;
+				}
+			}
+		}
+	}
+}
