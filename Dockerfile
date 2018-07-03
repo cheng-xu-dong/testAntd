@@ -1,5 +1,5 @@
 # 使用 node 8.11.1 作为基础镜像
-FROM node:8.11.3-alpine
+FROM node:8.11.3-slim
 
 # 安装nginx
 RUN apt-get update \
