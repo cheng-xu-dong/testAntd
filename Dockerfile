@@ -6,7 +6,8 @@ FROM registry.cn-hangzhou.aliyuncs.com/sovell-io/nginx-base:latest
 #		&& apt-get install -y nginx
 
 # 安装node
-RUN yum install nodejs
+RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
+		&& yum install nodejs
 
 #RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 #ADD nginx.conf /etc/nginx/
