@@ -22,6 +22,7 @@ EXPOSE 80
 # 为了减小镜像体积，尽可能将一些同类操作，集成到一个步骤中，如下
 RUN npm install \
 		&& npm run build \
+	  && mkdir -p /var/www/html/sovell-lachesis-static-microrestaurant/wap \
 		&& cp -r dist/* /var/www/html/sovell-lachesis-static-microrestaurant/wap \
 		&& rm -rf /app
 
