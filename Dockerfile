@@ -28,8 +28,8 @@ ADD nginx.conf /etc/nginx
 # 为了减小镜像体积，尽可能将一些同类操作，集成到一个步骤中，如下
 RUN npm install \
 		&& npm run build \
-		&& mkdir -p /var/www/html/sovell-lachesis-static-microrestaurant/wap \
-		&& cp -r dist/* /var/www/html/sovell-lachesis-static-microrestaurant/wap \ 
+		&& mkdir -p /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap \
+		&& cp -r dist/* /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap \
 		&& rm -rf /app
 
 # 以前台方式启动 nginx
