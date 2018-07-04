@@ -1,13 +1,13 @@
 # 使用 node 8.11.1 作为基础镜像
-FROM registry.cn-hangzhou.aliyuncs.com/sovell-io/nginx-base:latest
+FROM node:8.11.3-slim
 
 # 安装nginx
-#RUN apt-get update \
-#		&& apt-get install -y nginx
+RUN apt-get update \
+		&& apt-get install -y nginx
 
 # 安装node
-RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
-		&& yum -y install nodejs
+#RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
+#		&& yum -y install nodejs
 
 # 指定工作目录
 WORKDIR /app
@@ -15,8 +15,8 @@ WORKDIR /app
 # 将当前目录下的所有文件拷贝到工作目录下
 COPY . /app/
 
-RUN rm -rf /etc/nginx/nginx.conf
-ADD nginx.conf /etc/nginx/
+RUN rm -rf /etc/nginx/sites-enabled/default
+ADD default /etc/nginx/sites-enabled
 
 # 声明运行时容器提供的服务器接口
 
@@ -28,8 +28,8 @@ ADD nginx.conf /etc/nginx/
 # 为了减小镜像体积，尽可能将一些同类操作，集成到一个步骤中，如下
 RUN npm install \
 		&& npm run build \
-	  && mkdir -p /usr/local/nginx/html/sovell-lachesis-static-microrestaurant/wap \
-	  && cp -r dist/* /usr/local/nginx/html/sovell-lachesis-static-microrestaurant/wap \ 
+		&& mkdir -p /var/www/html/sovell-lachesis-static-microrestaurant/wap \
+		&& cp -r dist/* /var/www/html/sovell-lachesis-static-microrestaurant/wap \ 
 		&& rm -rf /app
 
 # 以前台方式启动 nginx
