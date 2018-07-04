@@ -15,8 +15,8 @@ WORKDIR /app
 # 将当前目录下的所有文件拷贝到工作目录下
 COPY . /app/
 
-RUN rm -rf /etc/nginx/sites-enabled/default
-ADD default /etc/nginx/sites-enabled
+RUN rm -rf /etc/nginx/nginx.conf
+ADD nginx.conf /etc/nginx
 
 # 声明运行时容器提供的服务器接口
 
