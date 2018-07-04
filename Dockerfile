@@ -31,3 +31,6 @@ RUN npm install \
 	  && mkdir -p /usr/local/nginx/html/sovell-lachesis-static-microrestaurant/wap \
 	  && cp -r dist/* /usr/local/nginx/html/sovell-lachesis-static-microrestaurant/wap \ 
 		&& rm -rf /app
+
+# 以前台方式启动 nginx
+CMD ["nginx","-g","daemon off;"]
