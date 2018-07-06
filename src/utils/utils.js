@@ -56,9 +56,23 @@ export function getOrderType(oi_mhb_bii_id, oi_type, order_meal_info) {
   let nowTime = new Date().getTime();
   let paySuccessType;
   let returnObj = {};
+  let refundTime;
 
   if (nowTime <= new Date((order_meal_info.bespeak_date).replace(/-/g,"/") + ' ' + order_meal_info.order_end_time)) {
     paySuccessType = 'reserveTimeBefore';
+    let totalTime = new Date((order_meal_info.bespeak_date).replace(/-/g, "/") + ' ' + order_meal_info.order_end_time) - new Date().getTime();
+    let refundTimeDay = parseInt(totalTime / (1000 * 60 * 60 * 24));
+    let refundTimeHour = parseInt((totalTime - (refundTimeDay * (24 * 60 * 60 * 1000))) / (1000 * 60 * 60));
+    let refundTimeMinute = parseInt((totalTime - (refundTimeDay * (24 * 60 * 60 * 1000)) - (refundTimeHour * (60 * 60 * 1000))) / (1000 * 60));
+    if (refundTimeDay === 0 && refundTimeHour !== 0 && refundTimeMinute !== 0) {
+      refundTime = refundTimeHour + '小时' + refundTimeMinute + '分钟';
+    } else if (refundTimeDay === 0 && refundTimeHour === 0 && refundTimeMinute !== 0) {
+      refundTime = refundTimeMinute + '分钟';
+    } else if (refundTimeDay === 0 && refundTimeHour === 0 && refundTimeMinute === 0) {
+      refundTime = '1分钟';
+    } else {
+      refundTime = refundTimeDay + '天' + refundTimeHour + '小时' + refundTimeMinute + '分钟';
+    }
   } else {
     paySuccessType = 'reserveTimeAfter';
 
@@ -102,6 +116,10 @@ export function getOrderType(oi_mhb_bii_id, oi_type, order_meal_info) {
   }
 
   returnObj['paySuccessType'] = paySuccessType;
+
+  if (paySuccessType && paySuccessType === 'reserveTimeBefore') {
+    returnObj['refundTime'] = refundTime;
+  }
 
   return returnObj;
 }

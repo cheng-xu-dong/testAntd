@@ -75,7 +75,7 @@ export default class OrderDinner extends Component {
       this.setState({
         shopBusiness: nextProps.orderDinner.shopBusiness.items ? nextProps.orderDinner.shopBusiness.items : []
       }, () => {
-        const { shopBusiness, fewDate, editeFoodCount } = this.state;
+        const { shopBusiness, editeFoodCount } = this.state;
         let mealCategoryDate = [];
 
         shopBusiness.map((array, index) => {

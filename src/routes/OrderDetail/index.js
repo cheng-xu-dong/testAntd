@@ -383,6 +383,8 @@ export default class OrderDetail extends Component {
                                                   [styles.tipSelfMeal]: getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).font !== '待支付' && getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).font !== '支付成功' && orderInfo && parseInt(orderInfo.oi_mhb_bii_id) === 8
                                                 }, {
                                                   [styles.buttonTipSelfMeal]: (getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).font === '待支付' || getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).font === '支付成功') && orderInfo && parseInt(orderInfo.oi_mhb_bii_id) === 8
+                                                }, {
+                                                  [styles.noButtonTipSelfMeal]: getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).font === '支付成功' && orderInfo && mealInfo && parseInt(orderInfo.oi_mhb_bii_id) === 8 && getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).paySuccessType === 'reserveTimeAfter'
                                                 })}>
                 {
                   parseInt(orderInfo.oi_mhb_bii_id) === 8 ? (
@@ -416,26 +418,31 @@ export default class OrderDetail extends Component {
                     ) : (
                       getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).font === '支付成功' ? (
                         getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).paySuccessType === 'reserveTimeAfter' ? (
-                          <div className={styles.buttonDiv}>
+                            <div className={classNames({
+                              [styles.buttonDiv]: parseInt(orderInfo.oi_mhb_bii_id) === 2
+                            }, {
+                              [styles.noButtonDiv]: parseInt(orderInfo.oi_mhb_bii_id) === 8
+                            })}>
                             <p>{getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).text}</p>
                             {
                               parseInt(orderInfo.oi_mhb_bii_id) === 8 ? (
                                 <span className={classNames({
                                   [styles.noColor]: getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).noColor
                                 })}>取餐时间&nbsp;&nbsp;{getNearDate(mealInfo.bespeak_date)}&nbsp;{mealInfo.takemeal_start_time}~{mealInfo.takemeal_end_time}</span>
-                              ) : ''
+                              ) : (
+                                <div className={styles.button}>
+                                  <button onClick={() =>
+                                    alert('确定要确认取餐吗？', '', [
+                                      { text: '取消', onPress: () => console.log('cancel') },
+                                      { text: '确认', onPress: () => this.sureTakeMeal(oi_id, userInfo) },
+                                    ])}>确认取餐</button>
+                                </div>
+                              )
                             }
-                            <div className={styles.button}>
-                              <button onClick={() =>
-                                        alert('确定要确认取餐吗？', '', [
-                                          { text: '取消', onPress: () => console.log('cancel') },
-                                          { text: '确认', onPress: () => this.sureTakeMeal(oi_id, userInfo) },
-                                        ])}>确认取餐</button>
-                            </div>
                           </div>
                         ) : (
                           <div className={styles.buttonDiv}>
-                            <p>{getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).text}</p>
+                            <p>{getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).refundTime + ' ' + getOrderType(orderInfo.oi_mhb_bii_id, orderInfo.oi_type, mealInfo).text}</p>
                             {
                               parseInt(orderInfo.oi_mhb_bii_id) === 8 ? (
                                 <span className={classNames({

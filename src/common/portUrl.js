@@ -74,7 +74,7 @@ export default {
       timeObj: [{
         key: 'reserveTimeBefore',
         value: '支付成功',
-        text: '预定截止前可取消订单，将自动退款',
+        text: '后不可取消订单',
         noColor: false,
       }, {
         key: 'reserveTimeAfter',
@@ -109,7 +109,12 @@ export default {
       timeObj: [{
         key: 'reserveTimeBefore',
         value: '支付成功',
-        text: '预定截止前可取消订单，将自动退款',
+        text: '后不可取消订单',
+        noColor: false,
+      }, {
+        key: 'reserveTimeAfter',
+        value: '支付成功',
+        text: '如有疑问，请联系商家',
         noColor: false,
       }, {
         key: 'takeTime',

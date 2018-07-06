@@ -169,11 +169,18 @@ export default class Order extends Component {
                                   <div className={styles.tip}>
                                     {
                                       getOrderType(array.oi_mhb_bii_id, array.oi_type, array.order_meal_info).font === '待取餐' ? (
-                                        <span className={classNames({
-                                          [styles.mealType]: true
-                                        }, {
-                                          [styles.mealTypeNoColor]: getOrderType(array.oi_mhb_bii_id, array.oi_type, array.order_meal_info).noColor
-                                        })}>取餐时间&nbsp;&nbsp;{getNearDate(array.order_meal_info.bespeak_date)}&nbsp;{array.order_meal_info.takemeal_start_time}~{array.order_meal_info.takemeal_end_time}</span>
+                                        <div className={styles.waitTakeMeal}>
+                                          <span className={classNames({
+                                            [styles.mealType]: true
+                                          }, {
+                                            [styles.mealTypeNoColor]: getOrderType(array.oi_mhb_bii_id, array.oi_type, array.order_meal_info).noColor
+                                          })}>{getNearDate(array.order_meal_info.bespeak_date)}&nbsp;{array.order_meal_info.mli_name}</span>
+                                          <span className={classNames({
+                                            [styles.mealType]: true
+                                          }, {
+                                            [styles.mealTypeNoColor]: getOrderType(array.oi_mhb_bii_id, array.oi_type, array.order_meal_info).noColor
+                                          })}>取餐时间&nbsp;&nbsp;{getNearDate(array.order_meal_info.bespeak_date)}&nbsp;{array.order_meal_info.takemeal_start_time}~{array.order_meal_info.takemeal_end_time}</span>
+                                        </div>
                                       ) : (
                                         <span className={classNames({
                                           [styles.mealType]: true

@@ -5,7 +5,7 @@ import portUrl from '../common/portUrl.js';
 // 查询餐厅业务（餐别）
 export async function getShopBusiness(params) {
   return request(`${portUrl.urlRoot + portUrl.urlPort}merchant/business/meals?${stringify(params)}`);
-}getShopBusinessIntroduce
+}
 
 // 查询餐厅全部业务
 export async function getShopBusinessIntroduce(params) {

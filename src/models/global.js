@@ -67,6 +67,7 @@ export default {
         payload.setState({
           qrcode: response.result.auth_code,
           refreshFlag: true,
+          isWait: false,
         }, () => {
           setTimeout(() => {
             payload.setState({
