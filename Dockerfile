@@ -3,7 +3,8 @@ FROM node:8.11.3-slim
 
 # 安装nginx
 RUN apt-get update \
-		&& apt-get install -y nginx
+		&& apt-get install -y nginx \
+		&& npm install -y cnpm
 
 # 安装node
 #RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
@@ -26,7 +27,7 @@ ADD nginx.conf /etc/nginx
 # 4.删除工作目录的文件，尤其是 node_modules 以减小镜像体积
 # 由于镜像构建的每一步都会产生新层
 # 为了减小镜像体积，尽可能将一些同类操作，集成到一个步骤中，如下
-RUN npm install \
+RUN cnpm install \
 		&& npm run build \
 		&& mkdir -p /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap \
 		&& cp -r dist/* /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap \
