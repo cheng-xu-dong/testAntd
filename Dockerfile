@@ -4,7 +4,7 @@ FROM registry.cn-hangzhou.aliyuncs.com/test_ocker/test_antd:latest
 # 安装nginx
 RUN apt-get update \
 		&& apt-get install -y nginx \
-		&& apt-get install -y nodejs:8.11.3-slim
+		&& apt-get install -y nodejs
 
 # 安装node
 #RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
