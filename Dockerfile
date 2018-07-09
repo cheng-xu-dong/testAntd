@@ -27,6 +27,7 @@ COPY . /app/
 # 由于镜像构建的每一步都会产生新层
 # 为了减小镜像体积，尽可能将一些同类操作，集成到一个步骤中，如下
 RUN npm run build \
+		&& mkdir -p /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap \
 		&& cp -r dist/* /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap \
 		&& rm -rf /app
 
