@@ -1,22 +1,22 @@
 # 使用 node 8.11.1 作为基础镜像
-FROM node:8.11.3-slim
+FROM registry.cn-hangzhou.aliyuncs.com/test_ocker/test_antd:latest
 
 # 安装nginx
-RUN apt-get update \
-		&& apt-get install -y nginx
+#RUN apt-get update \
+#		&& apt-get install -y nginx
 
 # 安装node
 #RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
 #		&& yum -y install nodejs
 
 # 指定工作目录
-WORKDIR /app
+#WORKDIR /app
 
 # 将当前目录下的所有文件拷贝到工作目录下
 COPY . /app/
 
-RUN rm -rf /etc/nginx/nginx.conf
-ADD nginx.conf /etc/nginx
+#RUN rm -rf /etc/nginx/nginx.conf
+#ADD nginx.conf /etc/nginx
 
 # 声明运行时容器提供的服务器接口
 
@@ -26,9 +26,7 @@ ADD nginx.conf /etc/nginx
 # 4.删除工作目录的文件，尤其是 node_modules 以减小镜像体积
 # 由于镜像构建的每一步都会产生新层
 # 为了减小镜像体积，尽可能将一些同类操作，集成到一个步骤中，如下
-RUN npm install \
-		&& npm run build \
-		&& mkdir -p /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap \
+RUN npm run build \
 		&& cp -r dist/* /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap
 
 # 以前台方式启动 nginx
