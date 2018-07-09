@@ -1,9 +1,10 @@
 # 使用 node 8.11.1 作为基础镜像
-FROM node:8.11.3-slim
+FROM registry.cn-hangzhou.aliyuncs.com/test_ocker/test_antd:latest
 
 # 安装nginx
 RUN apt-get update \
-		&& apt-get install -y nginx
+		&& apt-get install -y nginx \
+		&& apt-get install -y nodejs:8.11.3-slim
 
 # 安装node
 #RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
