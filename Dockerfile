@@ -10,10 +10,10 @@ RUN apt-get update \
 #		&& yum -y install nodejs
 
 # 指定工作目录
-WORKDIR /app
+#WORKDIR /app
 
 # 将当前目录下的所有文件拷贝到工作目录下
-COPY . /app/
+#COPY . /app/
 
 RUN rm -rf /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx
@@ -29,8 +29,7 @@ ADD nginx.conf /etc/nginx
 RUN npm install \
 		&& npm run build \
 		&& mkdir -p /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap \
-		&& cp -r dist/* /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap \
-		&& rm -rf /app
+		&& cp -r dist/* /usr/share/nginx/html/sovell-lachesis-static-microrestaurant/wap
 
 # 以前台方式启动 nginx
 CMD ["nginx","-g","daemon off;"]
